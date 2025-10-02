@@ -7,7 +7,7 @@ app_ui = ui.page_fluid(
     ui.layout_sidebar(
         # Side Bar object
         ui.sidebar(
-            ui.h3("I. Patient Characteristics"),
+            ui.h3("Sociodemographics and Vascular risk profile"),
             ui.input_radio_buttons(
                 "sex", "Gender", choices=["Female", "Male"], selected="Female"
             ),
@@ -32,7 +32,7 @@ app_ui = ui.page_fluid(
             # BMI: 10–60, default 21, step 1 (adjust step if needed)
             ui.input_slider(
                 "bmi",
-                "Body mass index (BMI) kg/m2",
+                "Body mass index (BMI) kg/m\u00B2",
                 min=10,
                 max=60,
                 value=21,
@@ -60,7 +60,7 @@ app_ui = ui.page_fluid(
                 "stroke", "Have stroke history", choices=["Yes", "No"], selected="No"
             ),
             ui.input_slider(
-                "GDS", "GDS score", min=0, max=20, value=0, step=1, ticks=True
+                "GDS", "Geriatric Depression Scale (GDS-15)†", min=0, max=20, value=0, step=1, ticks=True
             ),
             ui.input_action_button("action_button", "Start"),
             width=400,
@@ -118,11 +118,18 @@ app_ui = ui.page_fluid(
                 ui.tags.li("Gather scores, interpret and check clincal action"),
                 ),
             ui.p(
+                ui.tags.sup("†", style="font-size:1em; line-height:0; vertical-align:text-top;"),
+                "Geriatric Depression Scale (GDS-15) is a 15-item self-report screening tool ",
+                "widely used to assess symptoms of depression in older adults.",
+                ui.a("GDS-15 MD+Calc", href="https://www.mdcalc.com/calc/10566/geriatric-depression-scale-gds-15?uuid=80287161-040a-42bf-8c29-5e1494c01cc7&utm_source=mdcalc"),
+                style="margin-top: 10rem;"  # remove font-size to keep default
+            ),
+            ui.p(
                 ui.strong("Source:"),
                 " Tan et al. A point-based cognitive impairment scoring system for southeast Asian adults. ",
                 "JPAD. 2025 Apr 1;12(4):100069. ",
-                ui.a("https://doi.org/10.1016/j.tjpad.2025.100069", href="https://doi.org/10.1016/j.tjpad.2025.100069"),
-                style="margin-top: 10rem; font-size: 0.7rem;"
+                ui.a("doi.org/10.1016/j.tjpad.2025.100069", href="https://doi.org/10.1016/j.tjpad.2025.100069"),
+                style="margin-top: 2rem; font-size: 0.7rem;"
             ),)
         )
     )  # <-- closes ui.layout_sidebar
